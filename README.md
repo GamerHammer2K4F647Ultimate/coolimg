@@ -109,7 +109,3 @@ display()
     SDL_RenderPresent(r); // display the renderer
 }
 ```
-=======
-# coolimg
-MOVED TO GITLAB: https://gitlab.com/AnonimFan/coolimg
->>>>>>> 498e874 (Initial commit)
