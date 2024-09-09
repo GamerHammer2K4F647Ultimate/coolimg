@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 **[Features](#Features) |**
 **[Plot](#Plot) |**
 **[Installing](#Installing) |**
@@ -8,24 +7,18 @@
 
 Simple image viewer.
 
-![yes i use dwm why did you ask](images/1.png)
-
-Has a ~~windows~~(windows version outdated, linux version useable only) linux version.
-
 # Requirments
 - git
 
 - libpng, libjpeg, libsdl2, libsdl2-image
 
-- file
+- file (unix command)
 
 - glibc (to use musl, you have to rebuild SDL2)
 
-- cc(symlink or hard link to gcc/clang is okay)
+- cc (symlink or hard link to gcc/clang is okay)
 
-- gdb(not required, but the -ggdb flag for the compiler exists, and also useful for debugging)
-
-- pandoc (to create the manpage)
+- gdb (not required)
 
 # Plot
 coolimg is trying to be an app similar to the suckless philosophy.
