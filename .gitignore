@@ -1,0 +1,10 @@
+./coolimg
+./configure
+./imginfo
+src/main.c~
+Makefile.config
+*.PNG
+*.JPG
+*.png
+*.jpg
+include/
