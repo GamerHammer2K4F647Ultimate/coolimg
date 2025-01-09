@@ -6,6 +6,7 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 #include <vector>
+#include "color.h"
 
 SDL_Renderer* r;
 SDL_Window* win;
@@ -22,7 +23,10 @@ SDL_Texture* openIMG(const char* path)
 	SDL_Texture* img = NULL;
 	img = IMG_LoadTexture(r, path);
 	if (img == NULL) {
-		std::cout << "failed to open image, " << SDL_GetError() << std::endl;
+		char* text = (char*)malloc(512);
+		sprintf(text, "failed to load image: %s", SDL_GetError());
+		logerr(stderr, text);
+		free(text);
 	}
 	return img;
 }
@@ -58,7 +62,7 @@ bool isImageFile(const std::string& filename)
     const std::vector<std::string> imageExtensions = {".jpg", ".jpeg", ".png", ".bmp", ".gif", ".tiff", ".webp", ".img"};
     size_t dotPosition = filename.find_last_of('.');
     if (dotPosition == std::string::npos) {
-        return false; // No extension found
+        return false;
     }
     std::string extension = filename.substr(dotPosition);
     for (char& ch : extension) {
@@ -72,15 +76,22 @@ bool isImageFile(const std::string& filename)
     return false;
 }
 
-bool should_be_scaled = false;
-
 int main(int argc, char *argv[])
 {
 	if(argc == 1) 
 	{
-		logerr(stdout, "no arguments given");
+		logerr(stderr, "no arguments given");
 		loginf(stdout, "use --help for help");
 		return 1;
+	}
+	if ((argc == 2) || !strcmp(argv[2], "--help")) {
+		fprintf(stdout, "syntax: coolimg [options] [file]\n");
+		fprintf(stdout, "options:\n");
+		fprintf(stdout, "    --help: display this text\n");
+		fprintf(stdout, "    -scale: scale the image down\n");
+		fprintf(stdout, "in-app commands:\n");
+		fprintf(stdout, "    q: quit\n");
+		return 0;
 	}
 	
 	scale = 1;     
